@@ -20,7 +20,7 @@
 		if (input.KeyDown(K_RIGHT))
 			m_movementSpeed = mainCharSpeed;
 
-		if (input.GetKeyState(K_UP) == KS_DOWN)
+		if (input.GetKeyState(K_UP) == KS_HIT)
 			m_jumpImpulse =-jumpImpulse;
 	}
 
