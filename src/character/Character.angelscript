@@ -9,6 +9,8 @@
 	private int m_jumpInTheAirCount = 0;
 	private int m_maxJumpsInTheAir = 1;
 
+	private CharacterController@ m_controller = DummyController();
+
 	Character(const string &in entityName, const vector2 pos)
 	{
 		// add character entity and rename it to "character" for matching character-
@@ -16,16 +18,23 @@
 		AddEntity(entityName, vector3(pos, -2.0f), 0.0f /*rotation*/, m_entity, "Character", 1.0f /*scale*/);
 	}
 
-	void update(CharacterController@ characterController)
+	void setController(CharacterController@ controller)
 	{
+		@m_controller = @controller;
+	}
+
+	void update()
+	{
+		m_controller.update();
+
 		ETHPhysicsController@ physicsController = m_entity.GetPhysicsController();
 
 		// never let character body sleep
 		physicsController.SetAwake(true);
 
 		checkGroundTouch();
-		updateMovement(@physicsController, characterController.getMovementSpeed());
-		updateJumpImpulse(@physicsController, characterController.getJumpImpulse());
+		updateMovement(@physicsController, m_controller.getMovementSpeed());
+		updateJumpImpulse(@physicsController, m_controller.getJumpImpulse());
 
 		// update entity animation frame
 		m_entity.SetFrame(m_frameColumn, m_directionLine);

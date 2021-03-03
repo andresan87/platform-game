@@ -10,10 +10,12 @@
 
 #include "src/character/Character.angelscript"
 #include "src/character/CharacterController.angelscript"
+#include "src/character/DummyController.angelscript"
 #include "src/character/MainCharacterController.angelscript"
 #include "src/character/NPCFollowPlayerController.angelscript"
 
 #include "src/gameplay/CameraController.angelscript"
+#include "src/gameplay/CharactersManager.angelscript"
 #include "src/gameplay/CharacterCameraController.angelscript"
 #include "src/gameplay/StaticCameraController.angelscript"
 

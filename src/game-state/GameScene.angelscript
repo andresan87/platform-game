@@ -3,11 +3,8 @@
 	private Button@ m_exitButton;
 	
 	private Character@ m_character;
-	private MainCharacterController m_characterController;
 
-	private Character@ m_npcFollower;
-	private NPCFollowPlayerController@ m_npcFollowerController;
-
+	private CharactersManager m_charactersManager;
 	private CameraController@ m_cameraController;
 	
 	GameScene()
@@ -25,22 +22,20 @@
 		AddEntity("background.ent", vector3(screenMiddle, -10.0f));
 
 		@m_character = Character("witch.ent", screenMiddle);
-
-		@m_npcFollower = Character("flameDragon.ent", vector2(screenMiddle.x - 100.0f, screenMiddle.y));
+		m_character.setController(MainCharacterController());
 		
 		@m_cameraController = CharacterCameraController(@m_character);
 		
-		@m_npcFollowerController = NPCFollowPlayerController(@m_npcFollower, @m_character);
+		Character npcFollower("flameDragon.ent", vector2(screenMiddle.x - 100.0f, screenMiddle.y));
+		npcFollower.setController(NPCFollowPlayerController(@npcFollower, @m_character));
+
+		m_charactersManager.addCharacter(@m_character);
+		m_charactersManager.addCharacter(@npcFollower);
 	}
 
 	void onUpdate() override
 	{
-		m_characterController.update();
-		m_character.update(@m_characterController);
-		
-		m_npcFollowerController.update();
-		m_npcFollower.update(@m_npcFollowerController);
-
+		m_charactersManager.update();
 		m_cameraController.update();
 
 		m_exitButton.putButton();
