@@ -13,8 +13,7 @@
 	{
 		// add character entity and rename it to "character" for matching character-
 		// specific entity callback functions
-		const int id = AddEntity(entityName, vector3(pos, -2.0f), "Character");
-		@m_entity = SeekEntity(id);
+		AddEntity(entityName, vector3(pos, -2.0f), 0.0f /*rotation*/, m_entity, "Character", 1.0f /*scale*/);
 	}
 
 	void update(CharacterController@ characterController)
