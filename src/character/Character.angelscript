@@ -107,7 +107,6 @@
 			physicsController.SetLinearVelocity(vector2(currentVelocity.x, jumpImpulse));
 			++m_jumpInTheAirCount;
 		}
-		
 	}
 
 	private void checkGroundTouch()

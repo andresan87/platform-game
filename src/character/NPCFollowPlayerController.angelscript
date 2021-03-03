@@ -28,7 +28,6 @@
 
 		const float npcSpeed = 4.0f;
 		const float jumpImpulse = 9.0f;
-		
 
 		// find current move direction based on character's movement
 		if (m_followedCharacterPos.x > m_npcCharacterPos.x + 70.f)
